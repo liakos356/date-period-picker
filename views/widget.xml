@@ -1,0 +1,26 @@
+<Alloy>
+	<Window id="datePeriodPicker" class='container' onOpen="doOpen" >
+		<View id="backgroundView">
+			<View id="pickerView">
+				<View id="labelDiv">
+					<View id="divStart" class="divLabels" onClick="doSelect" >
+						<Label class="dateLabel" left="5dp" id="startText" text='Start : ' />
+						<Label class="dateLabel" id='startDate' text="" />
+					</View>
+					<View height="2dp" width="Titanium.UI.FILL" backgroundColor="white" />
+					<View id="divEnd" class="divLabels" onClick="doSelect">
+						<Label class="dateLabel" left="5dp" id="endText" text='End : ' /> 
+						<Label class="dateLabel" id='endDate' text='' />
+					</View>
+				</View>
+				<Label id="duration"  />
+				<Picker id="picker" onChange="doChange" />
+				<View id="buttonDiv">
+					<Button id="btnOK" title="OK" left="10dp" />
+					<Button id="btnReset" title="Reset" onClick="doReset"/>
+					<Button id="btnCancel" title="Cancel" right="10dp" />
+				</View>
+			</View>
+		</View>
+	</Window>
+</Alloy>

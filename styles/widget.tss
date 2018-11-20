@@ -1,0 +1,86 @@
+".divLabels" : {
+	backgroundColor : 'transparent',
+	layout: 'horizontal',
+	width : Titanium.UI.FILL,
+	height : '40dp',
+}
+
+".dateLabel" : {
+	height : Titanium.UI.FILL,
+	color : 'black'
+}
+
+"#testView" : {
+	backgroundColor: 'transparent',
+	theme : 'Theme.AppCompat.Light',
+	title : '',
+	exitOnClose : false,
+	fullscreen : false,
+	navBarHidden:true,
+}
+
+"#startDate" : {
+	width : Titanium.UI.FILL,
+	right : '5dp',
+	textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
+}
+
+"#endDate" : {
+	width : Titanium.UI.FILL,
+	right : '5dp',
+	textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
+}
+
+"#picker" : {
+	type : Titanium.UI.PICKER_TYPE_DATE,
+	selectionIndicator : "true",
+	useSpinner : "false",
+	nativeSpinner : true,
+	backgroundColor : "transparent",
+	dateTimeColor : 'blue',
+	textColorPrimary : 'black',
+	dateTimeColor : 'black',
+	elevation : 3,
+}
+
+"#pickerView" : {
+	width: '90%',
+	height: Titanium.UI.SIZE,
+	layout: 'vertical',
+	borderRadius: 10,
+	bubbleParent : false,
+}
+
+"#buttonDiv" : {
+	width: '90%',
+	height: Titanium.UI.SIZE,
+}
+
+"#backgroundView" : {
+	width : Titanium.UI.FILL,
+	height : Titanium.UI.FILL,
+	backgroundColor : '#55000000',
+	opacity : 0,
+	zIndex : 0,
+}
+
+"#duration" : {
+	height: '40dp',
+	text : 'DURATION'
+}
+
+"#divStart" : {
+	type : 'start'
+}
+
+"#divEnd" : {
+	type : 'end'
+}
+
+"#labelDiv" : {
+	top : "10dp",
+	layout : 'vertical',
+	width : "80%",
+	height : Titanium.UI.SIZE,
+	borderRadius : 10,
+}

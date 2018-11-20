@@ -1,0 +1,13 @@
+{
+	"id": "datePeriodPicker",
+	"name": "datePeriodPicker",
+	"description" : "A simple date picker alert dialog",
+	"author": "Elias Mantouvalos",
+	"version": "0.1",
+	"copyright":"Copyright (c) 2018",
+	"license":"Public Domain",
+	"min-alloy-version": "1.0",
+	"min-titanium-version":"2.1",
+	"tags":"date, picker",
+	"platforms":"android,ios"
+}
