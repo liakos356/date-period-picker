@@ -4,7 +4,7 @@ Alloy widget to easily pick a date range
 ### Overview
 This is a widget for the Alloy MVC framework of Appcelerator's Titanium platform.
 
-The widget provides a simple date range picker that can be easily styled and configured.
+The widget provides a simple date range picker that can be easily styled and configured. It returns an object with the start and end dates that the user selected
 
 ### Features
 
