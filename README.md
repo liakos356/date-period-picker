@@ -4,7 +4,9 @@ Alloy widget to easily pick a date range
 ### Overview
 This is a widget for the Alloy MVC framework of Appcelerator's Titanium platform.
 
-The widget provides a simple date range picker that can be easily styled and configured. It returns an object with the start and end dates that the user selected
+The widget provides a simple date range picker that can be easily styled and configured. It returns an object with the start and end dates that the user selected. It utilizes the amazing moment.js library, which is highly configurable. 
+By default, the dates are never overlapped and have a minimun of 1 day difference and a maximum of 6 months.
+
 
 ## Screenshots
 
@@ -61,25 +63,51 @@ The widget provides a simple date range picker that can be easily styled and con
 
 ##### Properties
 
-| Name                  | Value         | Description |
-| ------                | ------        | ------      |
-| highlightColor        | string        | ----        |
-| maxMonths             | int           | ----        |
-| textBackgroundColor   | string        | ----        |
-| startLabelColor       | string        | ----        |
-| endLabelColor         | string        | ----        |
-| fontSize              | int           | ----        |
-| buttonWidth           | string OR int | ----        |
-| buttonHeight          | string OR int | ----        |
-| buttonBackgroundColor | string        | ----        |
-| backgroundColor       | string        | ----        |
-| buttonFont            | string        | ----        |
-| buttonFontColor       | string        | ----        |
+
+		onAndroidback : ()=>{
+			$.datePeriodPicker.close();
+		},
+		onOK : (e)=>{
+			console.log('————>27:35<————');
+		},
+		onCancel : ()=>{
+			console.log('cancelled');
+			$.datePeriodPicker.close();
+		},
+		highlightColor : 'gray',
+		maxMonths : 6,
+		textBackgroundColor : "#F5F5F6",
+		startLabelColor : 'green',
+		endLabelColor : 'red',
+		fontSize : 16,
+		buttonWidth : Titanium.UI.SIZE,
+		buttonHeight : Titanium.UI.SIZE,
+		buttonBackgroundColor : 'transparent',
+		backgroundColor : 'white',
+		buttonFont : {
+			fontSize : 16
+		},
+		buttonFontColor : 'blue'
+
+| Name                  | Type          | Description | Default value    |
+| ------                | ------        | ------      | ------           |
+| highlightColor        | string        | ----        | "gray"           |
+| maxMonths             | int           | ----        | 6                |
+| textBackgroundColor   | string        | ----        | "#F5F5F6"        |
+| startLabelColor       | string        | ----        | "green"          |
+| endLabelColor         | string        | ----        | "red"            |
+| fontSize              | int           | ----        | 16               |
+| buttonWidth           | string OR int | ----        | Titanium.UI.SIZE |
+| buttonHeight          | string OR int | ----        | Titanium.UI.SIZE |
+| buttonBackgroundColor | string        | ----        | 'transparent'    |
+| backgroundColor       | string        | ----        | "white"          |
+| buttonFont            | font object   | ----        | {fontSize : 16}  |
+| buttonFontColor       | string        | ----        | "blue"           |
 
 ##### Methods
 
-| Name                  | Value         | Description |
-| ------                | ------        | ----        |
-| onAndroidback         | function      | ----        |
-| onOK                  | function      | ----        |
-| onCancel              | function      | ----        |
+| Name          | Type     | Return value |
+| ------        | ------   | ------       |
+| onAndroidback | function | null         |
+| onOK          | function | object       |
+| onCancel      | function | null         |
