@@ -106,16 +106,8 @@ By default, the dates are never overlapped and have a minimun of 1 day differenc
 
 ##### Methods
 
-<<<<<<< HEAD
 | Name          | Type     | Return value |
 | ------        | ------   | ------       |
 | onAndroidback | function | null         |
 | onOK          | function | object       |
 | onCancel      | function | null         |
-=======
-| Name                  | Value         | Description |
-| ------                | ------        | ----        |
-| onAndroidback         | function      | ----        |
-| onOK                  | function      | ----        |
-| onCancel              | function      | ----        |
->>>>>>> origin/master
