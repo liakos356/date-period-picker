@@ -63,8 +63,8 @@ The widget provides a simple date range picker that can be easily styled and con
 
 | Name                  | Value         | Description |
 | ------                | ------        | ------      |
-| v        | string        | ----        |
-| v             | int           | ----        |
+| highlightColor        | string        | ----        |
+| maxMonths             | int           | ----        |
 | textBackgroundColor   | string        | ----        |
 | startLabelColor       | string        | ----        |
 | endLabelColor         | string        | ----        |
