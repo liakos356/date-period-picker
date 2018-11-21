@@ -8,7 +8,7 @@ The widget provides a simple date range picker that can be easily styled and con
 
 ## Screenshots
 
-![iOS](https://github.com/liakos356/date-period-picker/blob/master/screenshots/ios.PNG?raw=true) ![Android](https://github.com/liakos356/date-period-picker/blob/master/screenshots/android.png?raw=true)
+![iOS](https://github.com/liakos356/date-period-picker/blob/master/datePeriodPicker/screenshots/ios.PNG?raw=true) ![Android](https://github.com/liakos356/date-period-picker/blob/master/datePeriodPicker/screenshots/android.png?raw=true)
 
 ### Features
 
