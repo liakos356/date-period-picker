@@ -10,8 +10,9 @@
 	color : 'black'
 }
 
-"#testView" : {
+"#datePeriodPicker" : {
 	backgroundColor: 'transparent',
+	modal : true,
 	theme : 'Theme.AppCompat.Light',
 	title : '',
 	exitOnClose : false,
@@ -64,11 +65,6 @@
 	zIndex : 0,
 }
 
-"#duration" : {
-	height: '40dp',
-	text : 'DURATION'
-}
-
 "#divStart" : {
 	type : 'start'
 }
@@ -78,7 +74,7 @@
 }
 
 "#labelDiv" : {
-	top : "10dp",
+	top : "20dp",
 	layout : 'vertical',
 	width : "80%",
 	height : Titanium.UI.SIZE,
