@@ -10,7 +10,7 @@ By default, the dates are never overlapped and have a minimun of 1 day differenc
 
 ## Screenshots
 
-![iOS](https://github.com/liakos356/date-period-picker/blob/master/screenshots/ios.PNG?raw=true) ![Android](https://github.com/liakos356/date-period-picker/blob/master/screenshots/android.png?raw=true)
+![iOS](https://github.com/liakos356/date-period-picker/blob/master/datePeriodPicker/screenshots/ios.PNG?raw=true) ![Android](https://github.com/liakos356/date-period-picker/blob/master/datePeriodPicker/screenshots/android.png?raw=true)
 
 ### Features
 
@@ -106,8 +106,16 @@ By default, the dates are never overlapped and have a minimun of 1 day differenc
 
 ##### Methods
 
+<<<<<<< HEAD
 | Name          | Type     | Return value |
 | ------        | ------   | ------       |
 | onAndroidback | function | null         |
 | onOK          | function | object       |
 | onCancel      | function | null         |
+=======
+| Name                  | Value         | Description |
+| ------                | ------        | ----        |
+| onAndroidback         | function      | ----        |
+| onOK                  | function      | ----        |
+| onCancel              | function      | ----        |
+>>>>>>> origin/master
