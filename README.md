@@ -12,31 +12,74 @@ The widget provides a simple date range picker that can be easily styled and con
 
 ### Features
 
-### Quick start
+## Use it
+
+### Global instance
+
+#### alloy.js
+
+	var datePicker = Alloy.createWidget('datePeriodPicker'});
+	
+	Alloy.Globals.datePicker = datePicker._show; 
+	
+	
+##### index.js
+
+	Alloy.Globals.datePicker({
+		highlightColor : 'red',
+		maxMonths : 6,
+		onOK : (e)=>{
+			console.log(e.dateStart);
+			console.log(e.dateEnd);
+		},
+		onCancel : ()=>{
+			console.log('You pressed cancel')
+		},
+		onAndroidback : ()=>{
+			console.log('obviously you have android')
+		}
+	});
+	
+### Local instances
+
+#### index.js
+
+	Alloy.createWidget('datePeriodPicker')._show({
+		onOK : (e)=>{
+			console.log(e.dateStart);
+			console.log(e.dateEnd);
+		},
+		onCancel : ()=>{
+			console.log('You pressed cancel')
+		},
+		onAndroidback : ()=>{
+			console.log('obviously you have android')
+		}
+	});
 
 ### API
 
 ##### Properties
 
-| Name                  | Value  | Description |
-| ------                | ------ | ------      |
-| highlightColor        | ----   | ----        |
-| maxMonths             | ----   | ----        |
-| textBackgroundColor   | ----   | ----        |
-| startLabelColor       | ----   | ----        |
-| endLabelColor         | ----   | ----        |
-| fontSize              | ----   | ----        |
-| buttonWidth           | ----   | ----        |
-| buttonHeight          | ----   | ----        |
-| buttonBackgroundColor | ----   | ----        |
-| backgroundColor       | ----   | ----        |
-| buttonFont            | ----   | ----        |
-| buttonFontColor       | ----   | ----        |
+| Name                  | Value         | Description |
+| ------                | ------        | ------      |
+| v        | string        | ----        |
+| v             | int           | ----        |
+| textBackgroundColor   | string        | ----        |
+| startLabelColor       | string        | ----        |
+| endLabelColor         | string        | ----        |
+| fontSize              | int           | ----        |
+| buttonWidth           | string OR int | ----        |
+| buttonHeight          | string OR int | ----        |
+| buttonBackgroundColor | string        | ----        |
+| backgroundColor       | string        | ----        |
+| buttonFont            | string        | ----        |
+| buttonFontColor       | string        | ----        |
 
 ##### Methods
 
-| Name                  | Value  | Description |
-| ------                | ------ | ----        |
-| onAndroidback         | ----   | ----        |
-| onOK                  | ----   | ----        |
-| onCancel              | ----   | ----        |
+| Name                  | Value         | Description |
+| ------                | ------        | ----        |
+| onAndroidback         | function      | ----        |
+| onOK                  | function      | ----        |
+| onCancel              | function      | ----        |
