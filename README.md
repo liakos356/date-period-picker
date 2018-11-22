@@ -63,32 +63,6 @@ By default, the dates are never overlapped and have a minimun of 1 day differenc
 
 ##### Properties
 
-
-		onAndroidback : ()=>{
-			$.datePeriodPicker.close();
-		},
-		onOK : (e)=>{
-			console.log('————>27:35<————');
-		},
-		onCancel : ()=>{
-			console.log('cancelled');
-			$.datePeriodPicker.close();
-		},
-		highlightColor : 'gray',
-		maxMonths : 6,
-		textBackgroundColor : "#F5F5F6",
-		startLabelColor : 'green',
-		endLabelColor : 'red',
-		fontSize : 16,
-		buttonWidth : Titanium.UI.SIZE,
-		buttonHeight : Titanium.UI.SIZE,
-		buttonBackgroundColor : 'transparent',
-		backgroundColor : 'white',
-		buttonFont : {
-			fontSize : 16
-		},
-		buttonFontColor : 'blue'
-
 | Name                  | Type          | Description | Default value    |
 | ------                | ------        | ------      | ------           |
 | highlightColor        | string        | ----        | "gray"           |
