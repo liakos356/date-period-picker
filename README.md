@@ -20,7 +20,7 @@ By default, the dates are never overlapped and have a minimun of 1 day differenc
 
 #### alloy.js
 
-	var datePicker = Alloy.createWidget('datePeriodPicker'});
+	var datePicker = Alloy.createWidget('datePeriodPicker');
 	
 	Alloy.Globals.datePicker = datePicker._show; 
 	
