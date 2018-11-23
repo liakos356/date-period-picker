@@ -212,3 +212,7 @@ exports._show = (_args = {}) =>{
 
 	$.datePeriodPicker.open();
 }
+
+exports._close = ()=>{
+	$.datePeriodPicker.close();
+}

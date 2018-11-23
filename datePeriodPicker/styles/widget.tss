@@ -10,15 +10,7 @@
 	color : 'black'
 }
 
-"#datePeriodPicker" : {
-	backgroundColor: 'transparent',
-	modal : true,
-	theme : 'Theme.AppCompat.Light',
-	title : '',
-	exitOnClose : false,
-	fullscreen : false,
-	navBarHidden:true,
-}
+
 
 "#startDate" : {
 	width : Titanium.UI.FILL,
@@ -79,4 +71,23 @@
 	width : "80%",
 	height : Titanium.UI.SIZE,
 	borderRadius : 10,
+}
+
+"#datePeriodPicker[platform=android]" : {
+	backgroundColor: 'transparent',
+	modal : true,
+	theme : 'Theme.AppCompat.Light',
+	title : '',
+	exitOnClose : false,
+	fullscreen : false,
+	navBarHidden:true,
+}
+
+"#datePeriodPicker[platform=ios]" : {
+	backgroundColor: 'transparent',
+	modal : false,
+	title : '',
+	exitOnClose : false,
+	fullscreen : true,
+	navBarHidden:true,
 }
