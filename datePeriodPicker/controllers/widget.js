@@ -141,14 +141,14 @@ function doReset(){
 	let text
 	,_minDateDiff = args.minDaysDifference;
 
-	if ((_minDateDiff == 0)){
+	if (_minDateDiff == 0){
 		_minDateDiff = '';
 		text = args.labelSameDay;	
 	}
 	else if(_minDateDiff == 1) text = " " + args.labelDay;
 	else text = " " + args.labelDays;
 
-	selectedPeriod = $.divEnd;
+	selectedPeriod = $.divStart;
 
 	$.divStart.setText(momentjs(args.resetDate).subtract(args.minDaysDifference,' '+ text).format());
 	$.divEnd.setText(momentjs(args.resetDate).format());
@@ -156,8 +156,8 @@ function doReset(){
 
 	$.divStart.backgroundColor = args.textBackgroundColor;
 	$.divEnd.backgroundColor = args.textBackgroundColor;
-	$.divEnd.backgroundColor = args.highlightColor;
-	$.duration.text = args.minDaysDifference + ' ' + text;
+	$.divStart.backgroundColor = args.highlightColor;
+	$.duration.text = _minDateDiff + ' ' + text;
 }
 
 function doOpen(){
@@ -174,7 +174,6 @@ function doOpen(){
 
 (()=> { //constructor
 
-
 	$.divStart.setText = (value)=>{
 		$.startDate.date = value;
 		$.startDate.setText(momentjs(value).format('MMMM Do YYYY'));
@@ -189,25 +188,21 @@ function doOpen(){
 	$.pickerView.opacity = 0;
 	$.pickerView.transform = matrixBig;
 
-
-
-	selectedPeriod = $.divEnd;
+	selectedPeriod = $.divStart;
 
 })();
 
 function updateUI(){
 
-	let text;
+	let text
+	,_minDaysDifference = args.minDaysDifference;
 
-	// if (args.minDaysDifference > 1) text = " " + args.labelDays;
-	if (args.minDaysDifference > 1) text = " " + args.labelDays;
-	else text = " " + args.labelDay;
-
-	$.duration.text = args.minDaysDifference + text;
-	$.divEnd.backgroundColor = args.highlightColor;
-	
-	$.divStart.setText(momentjs(args.dateOnBoot).subtract(args.minDaysDifference,'day').format());
-	$.divEnd.setText(momentjs(args.dateOnBoot).format());
+	if (args.minDaysDifference == 0){
+		text = " " + args.labelSameDay;
+		_minDaysDifference = '';
+	}
+	else if (args.minDaysDifference == 1) text = " " + args.labelDay;
+	else text = " " + args.labelDays;
 
 	[$.startText
 	,$.startDate
@@ -233,13 +228,18 @@ function updateUI(){
 	$.startText.color = args.startLabelColor;
 	$.endText.color = args.endLabelColor;
 	$.labelDiv.backgroundColor = args.textBackgroundColor;
-	$.divEnd.backgroundColor = args.highlightColor;
+	$.divStart.backgroundColor = args.highlightColor;
 
 	$.btnOK.title = args.labelOK;
 	$.btnReset.title = args.labelReset;
 	$.btnCancel.title = args.labelCancel;
 	$.startText.text = args.labelStart;
 	$.endText.text = args.labelEnd;
+
+	$.divStart.setText(momentjs(args.dateOnBoot).subtract(args.minDaysDifference,'day').format());
+	$.divEnd.setText(momentjs(args.dateOnBoot).format());
+
+	$.duration.text = _minDaysDifference + text;
 }
 
 exports._show = (_args = {}) =>{
@@ -249,7 +249,6 @@ exports._show = (_args = {}) =>{
 	}
 
 	args = _args;
-
 	updateUI();
 
 	$.btnOK.addEventListener("click", ()=>{

@@ -3,7 +3,7 @@
 	"name": "datePeriodPicker",
 	"description" : "A simple date picker alert dialog",
 	"author": "Elias Mantouvalos",
-	"version": "0.2",
+	"version": "0.3",
 	"copyright":"Copyright (c) 2018",
 	"license":"Public Domain",
 	"min-alloy-version": "1.0",
