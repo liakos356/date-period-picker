@@ -8,7 +8,48 @@ let args = $.args
 	opacity : 1,
 	duration : animationDuration,
 	transform : matrixSmall
-});
+})
+,defaults = {
+	onAndroidback : ()=>{
+		$.datePeriodPicker.close();
+	},
+	onOK : (e)=>{
+		console.log('————>27:35<————');
+	},
+	onCancel : ()=>{
+		console.log('cancelled');
+		$.datePeriodPicker.close();
+	},
+	highlightColor : 'gray',
+	textBackgroundColor : "#F5F5F6",
+	startLabelColor : 'green',
+	endLabelColor : 'red',
+	fontSize : 16,
+	buttonWidth : Titanium.UI.SIZE,
+	buttonHeight : Titanium.UI.SIZE,
+	buttonBackgroundColor : 'transparent',
+	backgroundColor : 'white',
+	buttonFont : {
+		fontSize : 16
+	},
+	buttonFontColor : 'blue',
+
+		//new props
+	minDaysDifference : 1,
+	maxDaysDifference : 10,
+	minDate : false,
+	maxDate : false,
+	labelOK : L('ok','OK'),
+	labelReset : L('reset','Reset'),
+	labelCancel : L('cancel','Cancel'),
+	resetDate : momentjs().toDate(),
+	dateOnBoot : momentjs().toDate(),
+	labelStart : L('start','Start'),
+	labelEnd : L('end','End'),
+	labelDay : L('day','day'),
+	labelDays : L('days','days'),
+	labelSameDay : L('sameDay','Same day')
+};
 
 function doChange(e){
 	selectedPeriod.setText(e.value);
@@ -32,15 +73,14 @@ function calculateDays(start,end){
 	,newEndDay
 	,dayText
 	,differenceDays = _end.diff(_start, 'days')
-	,differenceMonths = _end.diff(_start, 'months');
 
-	if(_start.toDate() >= _end.toDate()){
+	if(_start.toDate() > _end.toDate()){
 
 		if(selectedPeriod.type === 'start'){
 			newStartDay = momentjs(_start.toDate(),"YYYY-MM-DD");
-			newEndDay = momentjs(_start.toDate(),"YYYY-MM-DD").add(1,'days');
+			newEndDay = momentjs(_start.toDate(),"YYYY-MM-DD").add(args.minDaysDifference,'days');
 		}else{
-			newStartDay = momentjs(_end.toDate(),"YYYY-MM-DD").subtract(1,'days');
+			newStartDay = momentjs(_end.toDate(),"YYYY-MM-DD").subtract(args.minDaysDifference,'days');
 			newEndDay = momentjs(_end.toDate(),"YYYY-MM-DD");
 		}
 
@@ -49,18 +89,19 @@ function calculateDays(start,end){
 
 		$.divStart.setText(newStartDay);
 		$.divEnd.setText(newEndDay);
-		$.duration.text = '1 ' + L('day','day');
+
+		// $.duration.text = '1 ' + L('day','day');
 
 		return;
 	}
 
-	if(differenceMonths > args.maxMonths){
+	if(differenceDays > args.maxDaysDifference){
 
 		if(selectedPeriod.type === 'start'){
 			newStartDay = momentjs(_start.toDate(),"YYYY-MM-DD");
-			newEndDay = momentjs(_start.toDate(),"YYYY-MM-DD").add(6,'months');
+			newEndDay = momentjs(_start.toDate(),"YYYY-MM-DD").add(args.maxDaysDifference,'days');
 		}else{
-			newStartDay = momentjs(_end.toDate(),"YYYY-MM-DD").subtract(6,'months');
+			newStartDay = momentjs(_end.toDate(),"YYYY-MM-DD").subtract(args.maxDaysDifference,'days');
 			newEndDay = momentjs(_end.toDate(),"YYYY-MM-DD");
 		}
 
@@ -69,12 +110,17 @@ function calculateDays(start,end){
 
 		$.divStart.setText(newStartDayDate);
 		$.divEnd.setText(newEndDayDate);
+		differenceDays = args.maxDaysDifference;
 
-		differenceDays = newEndDay.diff(newStartDay, 'days')
+		// differenceDays = newEndDay.diff(newStartDay, 'days')
 	}
 
-	if(differenceDays == 1) dayText = L('day','day');
-	else dayText = L('days','days');
+	if(differenceDays == 0){
+		differenceDays = '';
+		dayText = args.labelSameDay;
+	}
+	else if (differenceDays == 1) dayText = args.labelDay;
+	else dayText = args.labelDays;
 
 	$.duration.text = differenceDays + ' ' + dayText;
 }
@@ -92,15 +138,26 @@ function closeView(){
 
 function doReset(){
 
+	let text
+	,_minDateDiff = args.minDaysDifference;
+
+	if ((_minDateDiff == 0)){
+		_minDateDiff = '';
+		text = args.labelSameDay;	
+	}
+	else if(_minDateDiff == 1) text = " " + args.labelDay;
+	else text = " " + args.labelDays;
+
 	selectedPeriod = $.divEnd;
-	$.divStart.setText(momentjs().subtract(1,'days').format());
-	$.divEnd.setText(momentjs().format());
-	$.picker.setValue(momentjs().toDate());
+
+	$.divStart.setText(momentjs(args.resetDate).subtract(args.minDaysDifference,' '+ text).format());
+	$.divEnd.setText(momentjs(args.resetDate).format());
+	$.picker.setValue(momentjs(args.resetDate).toDate());
 
 	$.divStart.backgroundColor = args.textBackgroundColor;
 	$.divEnd.backgroundColor = args.textBackgroundColor;
 	$.divEnd.backgroundColor = args.highlightColor;
-	$.duration.text = '1 ' + L('day','day');
+	$.duration.text = args.minDaysDifference + ' ' + text;
 }
 
 function doOpen(){
@@ -117,6 +174,7 @@ function doOpen(){
 
 (()=> { //constructor
 
+
 	$.divStart.setText = (value)=>{
 		$.startDate.date = value;
 		$.startDate.setText(momentjs(value).format('MMMM Do YYYY'));
@@ -131,49 +189,25 @@ function doOpen(){
 	$.pickerView.opacity = 0;
 	$.pickerView.transform = matrixBig;
 
-	$.duration.text = '1' + L('day','day');
-	$.divStart.setText(momentjs().subtract(1,'days').format());
-	$.divEnd.backgroundColor = args.highlightColor;
-	$.divEnd.setText(momentjs().format());
-	selectedPeriod = $.divEnd;
 
+
+	selectedPeriod = $.divEnd;
 
 })();
 
-exports._show = (_args = {}) =>{
+function updateUI(){
 
-	let defaults = {
-		onAndroidback : ()=>{
-			$.datePeriodPicker.close();
-		},
-		onOK : (e)=>{
-			console.log('————>27:35<————');
-		},
-		onCancel : ()=>{
-			console.log('cancelled');
-			$.datePeriodPicker.close();
-		},
-		highlightColor : 'gray',
-		maxMonths : 6,
-		textBackgroundColor : "#F5F5F6",
-		startLabelColor : 'green',
-		endLabelColor : 'red',
-		fontSize : 16,
-		buttonWidth : Titanium.UI.SIZE,
-		buttonHeight : Titanium.UI.SIZE,
-		buttonBackgroundColor : 'transparent',
-		backgroundColor : 'white',
-		buttonFont : {
-			fontSize : 16
-		},
-		buttonFontColor : 'blue'
-	};
+	let text;
 
-	for (var prop in defaults) { 
-		if (!_args.hasOwnProperty(prop)) _args[prop] = defaults[prop];
-	}
+	// if (args.minDaysDifference > 1) text = " " + args.labelDays;
+	if (args.minDaysDifference > 1) text = " " + args.labelDays;
+	else text = " " + args.labelDay;
 
-	args = _args;
+	$.duration.text = args.minDaysDifference + text;
+	$.divEnd.backgroundColor = args.highlightColor;
+	
+	$.divStart.setText(momentjs(args.dateOnBoot).subtract(args.minDaysDifference,'day').format());
+	$.divEnd.setText(momentjs(args.dateOnBoot).format());
 
 	[$.startText
 	,$.startDate
@@ -181,19 +215,42 @@ exports._show = (_args = {}) =>{
 	,$.endDate
 	,$.duration].forEach((label)=>{
 		label.setFont({
-			fontSize : _args.fontSize,
+			fontSize : args.fontSize,
 		});
 	});
 
 	[$.btnOK
-	,$.btnReset
+	,$.btnReset 
 	,$.btnCancel].forEach((button)=>{
-		button.setWidth(_args.buttonWidth);
-		button.setHeight(_args.buttonHeight);
-		button.setBackgroundColor(_args.buttonBackgroundColor);
-		button.setColor(_args.buttonFontColor);
-		button.setFont(_args.buttonFont);
+		button.setWidth(args.buttonWidth);
+		button.setHeight(args.buttonHeight);
+		button.setBackgroundColor(args.buttonBackgroundColor);
+		button.setColor(args.buttonFontColor);
+		button.setFont(args.buttonFont);
 	});
+
+	$.pickerView.backgroundColor = args.backgroundColor;
+	$.startText.color = args.startLabelColor;
+	$.endText.color = args.endLabelColor;
+	$.labelDiv.backgroundColor = args.textBackgroundColor;
+	$.divEnd.backgroundColor = args.highlightColor;
+
+	$.btnOK.title = args.labelOK;
+	$.btnReset.title = args.labelReset;
+	$.btnCancel.title = args.labelCancel;
+	$.startText.text = args.labelStart;
+	$.endText.text = args.labelEnd;
+}
+
+exports._show = (_args = {}) =>{
+
+	for (var prop in defaults) { 
+		if (!_args.hasOwnProperty(prop)) _args[prop] = defaults[prop];
+	}
+
+	args = _args;
+
+	updateUI();
 
 	$.btnOK.addEventListener("click", ()=>{
 		_args.onOK({
@@ -201,14 +258,17 @@ exports._show = (_args = {}) =>{
 			dateEnd : $.endDate.date
 		});
 	});
+
 	$.btnCancel.addEventListener("click", _args.onCancel);
 	$.datePeriodPicker.addEventListener("androidback", _args.onAndroidback);
 
-	$.pickerView.backgroundColor = _args.backgroundColor;
-	$.startText.color = _args.startLabelColor;
-	$.endText.color = _args.endLabelColor;
-	$.labelDiv.backgroundColor = _args.textBackgroundColor;
-	$.divEnd.backgroundColor = _args.highlightColor;
+	if(!_args.allowFuture){
+		var today = new Date();
+		$.picker.setMaxDate(today);
+	}
+
+	if(_args.minDate) $.picker.setMinDate(_args.minDate);
+	if(_args.maxDate) $.picker.setMaxDate(_args.maxDate);
 
 	$.datePeriodPicker.open();
 }
