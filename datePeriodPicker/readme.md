@@ -8,11 +8,70 @@ The widget provides a simple date range picker that can be easily styled and con
 
 ### Screenshots
 
-![iOS](https://raw.githubusercontent.com/liakos356/date-period-picker/master/datePeriodPicker/screenshots/ios.png?raw=true) ![Android](https://raw.githubusercontent.com/liakos356/date-period-picker/master/datePeriodPicker/screenshots/android.png)
+## Get it [![gitTio](http://gitt.io/badge.png)](http://gitt.io/component/datePeriodPicker)
+
+Install via [gitTio](gittio install datePeriodPicker):
+
+	$ gittio install nl.fokkezb.toast
+
+Or download a [release](https://github.com/FokkeZB/nl.fokkezb.toast/releases), extract it to your app's `app/widgets/nl.fokkezb.toast` folder and add the dependency to your `config.json`:
+
+	{
+		..
+		"dependencies": {
+		    "datePeriodPicker": "*"
+		    ..
+		  }
+	}
+
+![iOS](https://raw.githubusercontent.com/liakos356/date-period-picker/master/datePeriodPicker/screenshots/ios.PNG?raw=true) ![Android](https://raw.githubusercontent.com/liakos356/date-period-picker/master/datePeriodPicker/screenshots/android.png)
 
 ### Features
 
-### Quick start
+## Use it
+
+### Global instance
+
+#### alloy.js
+
+	var datePicker = Alloy.createWidget('datePeriodPicker'});
+	
+	Alloy.Globals.datePicker = datePicker._show; 
+	
+	
+##### index.js
+
+	Alloy.Globals.datePicker({
+		highlightColor : 'red',
+		maxMonths : 6,
+		onOK : (e)=>{
+			console.log(e.dateStart);
+			console.log(e.dateEnd);
+		},
+		onCancel : ()=>{
+			console.log('You pressed cancel')
+		},
+		onAndroidback : ()=>{
+			console.log('obviously you have android')
+		}
+	});
+	
+### Local instances
+
+#### index.js
+
+	Alloy.createWidget('datePeriodPicker')._show({
+		onOK : (e)=>{
+			console.log(e.dateStart);
+			console.log(e.dateEnd);
+		},
+		onCancel : ()=>{
+			console.log('You pressed cancel')
+		},
+		onAndroidback : ()=>{
+			console.log('obviously you have android')
+		}
+	});
 
 ### API
 
