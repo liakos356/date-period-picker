@@ -4,13 +4,13 @@
 			<View id="pickerView">
 				<View id="labelDiv">
 					<View id="divStart" class="divLabels" onClick="doSelect" >
-						<Label class="dateLabel" left="5dp" id="startText" />
-						<Label class="dateLabel" id='startDate' text="" />
+						<Label id="startText" class="dateLabel" left="5dp" />
+						<Label id='startDate' class="dateLabel" text="" />
 					</View>
 					<View height="2dp" width="Titanium.UI.FILL" backgroundColor="white" />
 					<View id="divEnd" class="divLabels" onClick="doSelect">
-						<Label class="dateLabel" left="5dp" id="endText" /> 
-						<Label class="dateLabel" id='endDate' text='' />
+						<Label id="endText" class="dateLabel" left="5dp"  /> 
+						<Label id='endDate' class="dateLabel"  text='' />
 					</View>
 				</View>
 				<Label id="duration" height="40dp" text="L('duration','Duration')"/>

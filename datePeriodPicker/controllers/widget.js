@@ -14,17 +14,16 @@ let args = $.args
 		$.datePeriodPicker.close();
 	},
 	onOK : (e)=>{
-		console.log('————>27:35<————');
+		console.log('pressed ok');
 	},
 	onCancel : ()=>{
-		console.log('cancelled');
+		console.log('pressed cancell');
 		$.datePeriodPicker.close();
 	},
 	highlightColor : 'gray',
 	textBackgroundColor : "#F5F5F6",
 	startLabelColor : 'green',
 	endLabelColor : 'red',
-	fontSize : 16,
 	buttonWidth : Titanium.UI.SIZE,
 	buttonHeight : Titanium.UI.SIZE,
 	buttonBackgroundColor : 'transparent',
@@ -32,9 +31,13 @@ let args = $.args
 	buttonFont : {
 		fontSize : 16
 	},
+	labelsFont : {
+		fontSize : 16
+	},
+	pickerFont : {
+		fontSize : 16
+	},
 	buttonFontColor : 'blue',
-
-		//new props
 	minDaysDifference : 1,
 	maxDaysDifference : 10,
 	minDate : false,
@@ -209,9 +212,7 @@ function updateUI(){
 	,$.endText
 	,$.endDate
 	,$.duration].forEach((label)=>{
-		label.setFont({
-			fontSize : args.fontSize,
-		});
+		label.setFont(args.labelsFont);
 	});
 
 	[$.btnOK
@@ -229,6 +230,7 @@ function updateUI(){
 	$.endText.color = args.endLabelColor;
 	$.labelDiv.backgroundColor = args.textBackgroundColor;
 	$.divStart.backgroundColor = args.highlightColor;
+	$.picker.font = args.pickerFont;
 
 	$.btnOK.title = args.labelOK;
 	$.btnReset.title = args.labelReset;
