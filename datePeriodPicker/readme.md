@@ -10,11 +10,11 @@ The widget provides a simple date range picker that can be easily styled and con
 
 ## Get it [![gitTio](http://gitt.io/badge.png)](http://gitt.io/component/datePeriodPicker)
 
-Install via [gitTio](gittio install datePeriodPicker):
+Install via [gitTio](http://gitt.io/component/datePeriodPicker):
 
-	$ gittio install nl.fokkezb.toast
+	$ gittio install datePeriodPicker
 
-Or download a [release](https://github.com/FokkeZB/nl.fokkezb.toast/releases), extract it to your app's `app/widgets/nl.fokkezb.toast` folder and add the dependency to your `config.json`:
+Or download the zip file and extract it to your app's `app/widgets/datePeriodPicker` folder and add the dependency to your `config.json`:
 
 	{
 		..
