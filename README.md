@@ -4,7 +4,7 @@ Alloy widget to easily pick a date range
 ### Overview
 This is a widget for the Alloy MVC framework of Appcelerator's Titanium platform.
 
-The widget provides a simple date range picker that can be easily styled and configured. It returns an object with the start and end dates that the user selected
+The widget provides a simple date range picker that can be easily styled and configured. It returns an object with the start and end dates that the user selected. The dates cannot overlap (startDate <= endDate always!!!)
 
 ### Screenshots
 
@@ -77,35 +77,34 @@ Or download the zip file and extract it to your app's `app/widgets/datePeriodPic
 
 ##### Properties
 
-| Name                  | Type   | Default value      | Description |
-| ------                | ------ | ------             | ------      |
-| highlightColor        | ----   | 'gray'             | ----        |
-| textBackgroundColor   | ----   | "#F5F5F6"          | ----        |
-| startLabelColor       | ----   | 'green'            | ----        |
-| endLabelColor         | ----   | 'red'              | ----        |
-| fontSize              | ----   | 16                 | ----        |
-| buttonWidth           | ----   | Titanium.UI.SIZE   | ----        |
-| buttonHeight          | ----   | Titanium.UI.SIZE   | ----        |
-| buttonBackgroundColor | ----   | 'transparent'      | ----        |
-| backgroundColor       | ----   | 'white',           | ----        |
-| buttonFont            | ----   | object Font        | ----        |
-| labelsFont            | ----   | 'white'            | ----        |
-| pickerFont            | ----   | object Font        | ----        |
-| buttonFontColor       | ----   | 'blue'             | ----        |
-| minDaysDifference     | ----   | 1,                 | ----        |
-| maxDaysDifference     | ----   | 10,                | ----        |
-| minDate               | ----   | false              | ----        |
-| maxDate               | ----   | false              | ----        |
-| labelOK               | ----   | 'OK'               | ----        |
-| labelReset            | ----   | 'Reset'            | ----        |
-| labelCancel           | ----   | 'cancel'           | ----        |
-| resetDate             | ----   | object Date(today) | ----        |
-| dateOnBoot            | ----   | object Date(today) | ----        |
-| labelStart            | ----   | 'Start'            | ----        |
-| labelEnd              | ----   | 'End'              | ----        |
-| labelDay              | ----   | 'day'              | ----        |
-| labelDays             | ----   | 'days'             | ----        |
-| labelSameDay          | ----   | 'Same day'         | ----        |
+| Name                  | Type   | Default value      | Description                                                    |
+| ------                | ------ | ------             | ------                                                         |
+| highlightColor        | ----   | 'gray'             | selection color                                                |
+| textBackgroundColor   | ----   | "#F5F5F6"          | background color when not selected                             |
+| startLabelColor       | ----   | 'green'            | ----                                                           |
+| endLabelColor         | ----   | 'red'              | ----                                                           |
+| buttonWidth           | ----   | Titanium.UI.SIZE   | ----                                                           |
+| buttonHeight          | ----   | Titanium.UI.SIZE   | ----                                                           |
+| buttonBackgroundColor | ----   | 'transparent'      | ----                                                           |
+| backgroundColor       | ----   | 'white',           | background color of the alert                                  |
+| buttonFont            | ----   | object Font        | ----                                                           |
+| labelsFont            | ----   | object Font        | ----                                                           |
+| pickerFont            | ----   | object Font        | ----                                                           |
+| buttonFontColor       | ----   | 'blue'             | ----                                                           |
+| minDaysDifference     | ----   | 1,                 | the min days space before overlap (zero for same day)          |
+| maxDaysDifference     | ----   | 10,                | maximum date span before the selection change the other option |
+| minDate               | ----   | false              | ----                                                           |
+| maxDate               | ----   | false              | ----                                                           |
+| labelOK               | ----   | 'OK'               | title of onOK button                                           |
+| labelReset            | ----   | 'Reset'            | title of onReset button                                        |
+| labelCancel           | ----   | 'cancel'           | title of onCancel button                                       |
+| resetDate             | ----   | object Date(today) | date to set onReset                                            |
+| dateOnBoot            | ----   | object Date(today) | date to initialize                                             |
+| labelStart            | ----   | 'Start'            |                                                                |
+| labelEnd              | ----   | 'End'              | ----                                                           |
+| labelDay              | ----   | 'day'              | ----                                                           |
+| labelDays             | ----   | 'days'             | ----                                                           |
+| labelSameDay          | ----   | 'Same day'         | label to display when the same date is selected                |
 
 ##### Methods
 
