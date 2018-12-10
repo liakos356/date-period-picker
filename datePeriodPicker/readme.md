@@ -1,5 +1,5 @@
 # date-period-picker
-Alloy widget to easily pick a date range
+Alloy widget to easily pick a date range.
 
 ### Overview
 This is a widget for the Alloy MVC framework of Appcelerator's Titanium platform.
